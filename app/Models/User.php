@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use DateTimeInterface;
+use App\Models\BaseModel; // tambah ini
 
 class User extends Authenticatable
 {
@@ -31,6 +33,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->setTimezone(new \DateTimeZone('Asia/Jakarta'))
+                    ->format('Y-m-d H:i:s');
+    }
 
     // Relasi ke expert_profiles
     public function expertProfile()

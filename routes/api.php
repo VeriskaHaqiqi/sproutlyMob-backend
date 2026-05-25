@@ -63,3 +63,20 @@ Route::prefix('experts')->group(function () {
         Route::get('/profile/income-history',   [ExpertController::class, 'incomeHistory']);
     });
 });
+
+use App\Http\Controllers\Api\ConsultationController;
+
+// ==================== CONSULTATION ROUTES ====================
+Route::prefix('consultations')->middleware('auth:sanctum')->group(function () {
+
+    // User routes
+    Route::post('/',                        [ConsultationController::class, 'store']);
+    Route::get('/',                         [ConsultationController::class, 'userConsultations']);
+    Route::get('/payment-history',          [ConsultationController::class, 'paymentHistory']);
+    Route::get('/expert/list',              [ConsultationController::class, 'expertConsultations']);
+    Route::get('/{id}',                     [ConsultationController::class, 'show']);
+    Route::get('/{id}/payment',             [ConsultationController::class, 'paymentDetail']);
+    Route::post('/{id}/upload-proof',       [ConsultationController::class, 'uploadPaymentProof']);
+    Route::post('/{id}/verify-payment',     [ConsultationController::class, 'verifyPayment']);
+    Route::post('/{id}/end',                [ConsultationController::class, 'endConsultation']);
+});

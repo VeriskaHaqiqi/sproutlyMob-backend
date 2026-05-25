@@ -22,6 +22,7 @@ return new class extends Migration
                 'rejected'
             ])->default('waiting_payment');
             $table->timestamp('started_at')->nullable();
+            $table->timestamp('scheduled_end_at')->nullable();
             $table->timestamp('ended_at')->nullable();
             $table->timestamps();
         });

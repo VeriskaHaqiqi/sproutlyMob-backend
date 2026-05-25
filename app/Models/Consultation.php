@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+#use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel; // tambah ini
 
-class Consultation extends Model
+class Consultation extends BaseModel
 {
     use HasFactory;
 
@@ -16,11 +17,13 @@ class Consultation extends Model
         'fee',
         'status',
         'started_at',
+        'scheduled_end_at',
         'ended_at',
     ];
 
     protected $casts = [
         'started_at' => 'datetime',
+        'scheduled_end_at' => 'datetime',
         'ended_at' => 'datetime',
         'fee' => 'decimal:2',
     ];

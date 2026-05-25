@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+#use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel; // tambah ini
 
-class ExpertProfile extends Model
+class ExpertProfile extends BaseModel
 {
     use HasFactory;
 
